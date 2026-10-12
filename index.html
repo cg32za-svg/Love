@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#09070b" />
+  <title>Love in Every Language</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;800&family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="scene" aria-label="แอนิเมชันตัวอักษรบอกรัก">
+      <div class="scene-glow"></div>
+      <div id="word-field" class="word-field" aria-live="off"></div>
+      <div class="scene-caption">
+        <span class="caption-dot"></span>
+        <span id="caption">LOVE HAS NO LANGUAGE</span>
+      </div>
+      <div class="scene-title">
+        <span class="eyebrow">A LITTLE SOMETHING FOR YOU</span>
+        <h1 id="big-title">I love you.</h1>
+        <p id="subtitle">in every language, in every universe</p>
+      </div>
+      <div class="scene-footer"><span>MADE WITH ♥</span><span id="word-count">0 WORDS IN MOTION</span></div>
+    </section>
+
+    <aside class="control-panel">
+      <div class="panel-heading">
+        <div class="brand-mark">♥</div>
+        <div>
+          <p class="eyebrow">PERSONAL LOVE CANVAS</p>
+          <h2>Love Typography</h2>
+        </div>
+      </div>
+      <p class="intro">ปล่อยให้คำบอกรักลอยอยู่เต็มหน้าจอ ปรับข้อความ สี และชื่อคนพิเศษให้เป็นเวอร์ชันของคุณเอง</p>
+
+      <label for="from-name">ชื่อคนพิเศษ <span>OPTIONAL</span></label>
+      <input id="from-name" type="text" maxlength="35" placeholder="เช่น มายด์, เจ, My Love" />
+
+      <label for="message">ข้อความหลัก</label>
+      <input id="message" type="text" maxlength="55" value="I love you." />
+
+      <label for="words">คำที่ลอยในฉาก <span>แยกแต่ละคำด้วยเครื่องหมายจุลภาค</span></label>
+      <textarea id="words" rows="4">I love you,Je t'aime,Te amo,ฉันรักเธอ,Seni seviyorum,Ich liebe dich,我爱你,사랑해,Я тебя люблю,Ti amo,รักนะ,Kocham cię,Eu te amo</textarea>
+
+      <div class="field-row">
+        <div class="field-half">
+          <label for="color1">สีหลัก</label>
+          <div class="color-input"><input id="color1" type="color" value="#ff4f76"><span id="color1-value">#FF4F76</span></div>
+        </div>
+        <div class="field-half">
+          <label for="color2">สีรอง</label>
+          <div class="color-input"><input id="color2" type="color" value="#ff875e"><span id="color2-value">#FF875E</span></div>
+        </div>
+      </div>
+
+      <label for="density">จำนวนตัวอักษร <span id="density-value">75</span></label>
+      <input id="density" type="range" min="25" max="150" value="75" />
+
+      <label for="speed">ความเร็วการลอย <span id="speed-value">ปกติ</span></label>
+      <input id="speed" type="range" min="1" max="5" value="3" />
+
+      <div class="button-row">
+        <button id="start-btn" class="primary-btn" type="button"><span>▶</span> เริ่มแอนิเมชัน</button>
+        <button id="pause-btn" class="secondary-btn" type="button" aria-pressed="false">Ⅱ หยุด</button>
+      </div>
+      <button id="apply-btn" class="text-btn" type="button">✦ ใช้การตั้งค่าใหม่</button>
+      <p class="small-note">เคล็ดลับ: ลองใส่ชื่อเล่นหรือประโยคสั้น ๆ แล้วกด “ใช้การตั้งค่าใหม่”</p>
+    </aside>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

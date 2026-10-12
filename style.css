@@ -1,0 +1,64 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #09070b;
+  --panel: #111016;
+  --text: #f8f3f6;
+  --muted: #a7a0ad;
+  --pink: #ff4f76;
+  --orange: #ff875e;
+}
+html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--text); font-family: "Nunito", "Noto Sans Thai", sans-serif; }
+body { min-height: 100vh; }
+button, input, textarea { font: inherit; }
+.app { min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(300px, .8fr); }
+.scene { position: relative; min-height: 100vh; overflow: hidden; isolation: isolate; background: radial-gradient(ellipse at 50% 45%, #25101c 0%, #100a12 40%, #08070a 78%); }
+.scene::before { content:""; position:absolute; inset:0; opacity:.12; pointer-events:none; background-image: linear-gradient(#ffffff0c 1px, transparent 1px), linear-gradient(90deg,#ffffff0c 1px,transparent 1px); background-size: 44px 44px; mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent); }
+.scene-glow { position:absolute; width:60vw; height:60vw; max-width:700px; max-height:700px; left:50%; top:48%; transform:translate(-50%,-50%); border-radius:50%; background: radial-gradient(circle, #ff2f6418, transparent 68%); filter: blur(10px); pointer-events:none; }
+.word-field { position:absolute; inset:0; overflow:hidden; }
+.floating-word { position:absolute; white-space:nowrap; font-weight:800; letter-spacing:-.035em; line-height:1; user-select:none; will-change:transform, opacity; text-shadow:0 0 18px currentColor; animation: drift var(--duration, 12s) ease-in-out infinite alternate; animation-delay:var(--delay, 0s); opacity:var(--opacity,.8); }
+@keyframes drift { 0% { transform:translate3d(var(--x1),var(--y1),0) rotate(var(--r1)); } 100% { transform:translate3d(var(--x2),var(--y2),0) rotate(var(--r2)); } }
+.scene-title { position:absolute; z-index:3; left:9%; right:9%; top:50%; transform:translateY(-50%); text-align:center; pointer-events:none; padding:30px 10px; }
+.eyebrow { color:#d6a9b9; font-size:10px; font-weight:800; letter-spacing:.22em; }
+.scene-title h1 { margin:13px 0 7px; font-size:clamp(36px, 6vw, 78px); line-height:1.04; letter-spacing:-.06em; color:#fff8fb; text-shadow:0 0 40px #ff4f7650; overflow-wrap:anywhere; }
+.scene-title p { color:#d9c5ce; margin:0; font-size:clamp(11px,1.3vw,15px); letter-spacing:.04em; }
+.scene-caption { position:absolute; z-index:4; top:25px; left:28px; display:flex; align-items:center; gap:9px; font-size:10px; letter-spacing:.18em; color:#c8b8c2; }
+.caption-dot { width:6px; height:6px; border-radius:50%; background:var(--pink); box-shadow:0 0 12px var(--pink); }
+.scene-footer { position:absolute; z-index:4; bottom:23px; left:28px; right:28px; display:flex; justify-content:space-between; font-size:9px; letter-spacing:.17em; color:#8c7e8b; }
+.control-panel { background:linear-gradient(160deg,#15131b,#0d0c11 75%); border-left:1px solid #ffffff12; padding:clamp(22px,3vw,42px); display:flex; flex-direction:column; gap:11px; }
+.panel-heading { display:flex; align-items:center; gap:13px; margin-bottom:3px; }
+.brand-mark { width:43px; height:43px; display:grid; place-items:center; background:#ff4f7619; color:#ff7190; border:1px solid #ff4f7638; border-radius:14px; font-size:23px; }
+.panel-heading .eyebrow { margin:0 0 4px; font-size:8px; }
+.panel-heading h2 { margin:0; font-size:21px; letter-spacing:-.04em; }
+.intro { color:var(--muted); font-family:"Noto Sans Thai",sans-serif; font-size:12px; line-height:1.8; margin:4px 0 9px; }
+label { display:flex; justify-content:space-between; align-items:baseline; gap:8px; margin-top:7px; font-family:"Noto Sans Thai",sans-serif; font-size:12px; font-weight:600; color:#eee4eb; }
+label span { font-family:"Nunito",sans-serif; font-size:9px; letter-spacing:.04em; color:#8c8290; font-weight:600; text-align:right; }
+input[type="text"], textarea { width:100%; background:#09080d; border:1px solid #ffffff1a; color:#f9f0f5; border-radius:10px; outline:none; padding:11px 12px; font-size:12px; transition:border-color .2s, box-shadow .2s; }
+input[type="text"]:focus, textarea:focus { border-color:#ff4f7688; box-shadow:0 0 0 3px #ff4f7610; }
+textarea { resize:vertical; min-height:90px; font-family:"Noto Sans Thai",sans-serif; line-height:1.8; }
+.field-row { display:flex; gap:14px; }
+.field-half { min-width:0; flex:1; }
+.color-input { display:flex; align-items:center; gap:9px; padding:6px 9px; border:1px solid #ffffff1a; border-radius:10px; background:#09080d; color:#a99eaa; font-size:10px; }
+input[type="color"] { width:26px; height:25px; padding:0; border:0; background:transparent; cursor:pointer; }
+input[type="range"] { width:100%; accent-color:#ff5b7e; cursor:pointer; margin:6px 0 1px; }
+.button-row { display:flex; gap:9px; margin-top:10px; }
+button { cursor:pointer; border:0; border-radius:11px; padding:12px 13px; font-family:"Noto Sans Thai",sans-serif; font-weight:600; font-size:12px; transition:transform .18s, filter .18s, background .18s; }
+button:hover { filter:brightness(1.1); transform:translateY(-1px); }
+button:active { transform:translateY(0); }
+.primary-btn { flex:1; color:white; background:linear-gradient(110deg,#f04472,#d93863); box-shadow:0 8px 22px #ed3b661e; }
+.primary-btn span { margin-right:5px; font-size:10px; }
+.secondary-btn { color:#e8dce5; background:#ffffff0b; border:1px solid #ffffff18; min-width:92px; }
+.secondary-btn.active { color:#ff9bb0; background:#ff4f7616; }
+.text-btn { background:transparent; color:#ff91a8; border:1px solid #ff4f7638; }
+.small-note { color:#7f7683; font-family:"Noto Sans Thai",sans-serif; font-size:10px; line-height:1.7; margin:2px 0 0; }
+.paused .floating-word { animation-play-state:paused !important; }
+@media (min-width: 1200px) { .app { grid-template-columns:minmax(0,1.8fr) minmax(340px,.7fr); } }
+@media (max-width: 760px) {
+  .app { grid-template-columns:1fr; }
+  .scene { min-height:66vh; min-height:66svh; }
+  .control-panel { border-left:0; border-top:1px solid #ffffff12; padding:25px 22px 32px; }
+  .scene-title { left:5%; right:5%; }
+  .scene-title h1 { font-size:clamp(34px,10vw,58px); }
+  .scene-caption { top:18px; left:18px; font-size:9px; }
+  .scene-footer { left:18px; right:18px; bottom:16px; font-size:8px; }
+}
+@media (prefers-reduced-motion: reduce) { .floating-word { animation-duration:30s !important; } }
